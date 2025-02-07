@@ -1,21 +1,14 @@
-package com.example.usercrud.entity;
+package com.example.usercrud.dto;
 
-
-import jakarta.persistence.*;
-import org.hibernate.annotations.GenericGenerator;
+import org.springframework.stereotype.Component;
 
 import java.util.UUID;
 
 /**
- * MARK: User
- * DESC: A user entity
+ * MARK: UserDTO
+ * DESC: A Data Transfer Object
  */
-@Entity
-@Table(name = "users")
-public class User {
-    @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+public class UserDTO {
     private UUID uuid;
     private String firstName;
     private String lastName;
@@ -25,10 +18,7 @@ public class User {
     private String country;
     private Integer pinCode;
 
-    public User(){}
-
-    public User(UUID uuid, String firstName, String lastName, String email, String password, Long phoneNumber, String country, Integer pinCode) {
-        this.uuid = uuid;
+    public UserDTO(UUID uuid, String firstName, String lastName, String email, String password, Long phoneNumber, String country, Integer pinCode) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -36,14 +26,11 @@ public class User {
         this.phoneNumber = phoneNumber;
         this.country = country;
         this.pinCode = pinCode;
-    }
-
-    public UUID getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(UUID uuid) {
         this.uuid = uuid;
+    }
+
+    public UUID getUuid(){
+        return uuid;
     }
 
     public String getFirstName() {
